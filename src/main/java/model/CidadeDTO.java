@@ -1,5 +1,7 @@
 package model;
 
+import rmi.cidade.Cidade;
+
 import java.io.Serializable;
 
 public class CidadeDTO implements Serializable {
@@ -29,6 +31,11 @@ public class CidadeDTO implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public static CidadeDTO parseCidadeToCidadeDTO(Cidade cidade) {
+        CidadeDTO cidadeDTO = new CidadeDTO(cidade.getIbge(), cidade.getNome());
+        return cidadeDTO;
     }
 
     @Override

@@ -5,17 +5,17 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private CidadeDTO cidade;
-    private OcupacaoDTO ocupacaoDTO;
+    private OcupacaoDTO ocupacao;
     private UnidadeSaudeDTO uniSaude;
 
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String cpf, CidadeDTO cidade, OcupacaoDTO ocupacaoDTO, UnidadeSaudeDTO uniSaude) {
+    public Pessoa(String nome, String cpf, CidadeDTO cidade, OcupacaoDTO ocupacao, UnidadeSaudeDTO uniSaude) {
         this.nome = nome;
         this.cpf = cpf;
         this.cidade = cidade;
-        this.ocupacaoDTO = ocupacaoDTO;
+        this.ocupacao = ocupacao;
         this.uniSaude = uniSaude;
     }
 
@@ -23,20 +23,40 @@ public class Pessoa {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getCpf() {
         return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public CidadeDTO getCidade() {
         return cidade;
     }
 
-    public OcupacaoDTO getOcupacaoDTO() {
-        return ocupacaoDTO;
+    public void setCidade(CidadeDTO cidade) {
+        this.cidade = cidade;
+    }
+
+    public OcupacaoDTO getOcupacao() {
+        return ocupacao;
+    }
+
+    public void setOcupacao(OcupacaoDTO ocupacao) {
+        this.ocupacao = ocupacao;
     }
 
     public UnidadeSaudeDTO getUniSaude() {
         return uniSaude;
+    }
+
+    public void setUniSaude(UnidadeSaudeDTO uniSaude) {
+        this.uniSaude = uniSaude;
     }
 
     @Override
@@ -45,7 +65,7 @@ public class Pessoa {
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", cidade=" + cidade +
-                ", ocupacaoDTO=" + ocupacaoDTO +
+                ", ocupacaoDTO=" + ocupacao +
                 ", uniSaude=" + uniSaude +
                 '}';
     }

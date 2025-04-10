@@ -1,5 +1,7 @@
 package model;
 
+import rmi.ubs.UnidadeSaude;
+
 public class UnidadeSaudeDTO {
     private String nces;
     private String nome;
@@ -26,6 +28,11 @@ public class UnidadeSaudeDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public static UnidadeSaudeDTO parseUnidadeSaudeToUnidadeSaudeDTO(UnidadeSaude unidadeSaude){
+        UnidadeSaudeDTO unidadeSaudeDTO = new UnidadeSaudeDTO(unidadeSaude.getCnes(), unidadeSaude.getName());
+        return unidadeSaudeDTO;
     }
 
     @Override

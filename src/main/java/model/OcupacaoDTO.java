@@ -1,5 +1,8 @@
 package model;
 
+import rmi.cidade.Cidade;
+import rmiCbo.Cbo;
+
 public class OcupacaoDTO {
     private String cbo;
     private String nome;
@@ -26,6 +29,11 @@ public class OcupacaoDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public static OcupacaoDTO parseCboToOcupacaoDTO(Cbo ocupacao) {
+        OcupacaoDTO ocupacaoDTO = new OcupacaoDTO(ocupacao.getCodCbo(), ocupacao.getProfissao());
+        return ocupacaoDTO;
     }
 
     @Override
