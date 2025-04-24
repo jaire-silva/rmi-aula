@@ -5,13 +5,15 @@ import rmi.ubs.UnidadeSaude;
 public class UnidadeSaudeDTO {
     private String nces;
     private String nome;
+    private String bairro;
 
     public UnidadeSaudeDTO() {
     }
 
-    public UnidadeSaudeDTO(String nces, String nome) {
+    public UnidadeSaudeDTO(String nces, String nome, String bairro) {
         this.nces = nces;
         this.nome = nome;
+        this.bairro = bairro;
     }
 
     public String getNces() {
@@ -30,8 +32,16 @@ public class UnidadeSaudeDTO {
         this.nome = nome;
     }
 
-    public static UnidadeSaudeDTO parseUnidadeSaudeToUnidadeSaudeDTO(UnidadeSaude unidadeSaude){
-        UnidadeSaudeDTO unidadeSaudeDTO = new UnidadeSaudeDTO(unidadeSaude.getCnes(), unidadeSaude.getName());
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public static UnidadeSaudeDTO parseUnidadeSaudeToUnidadeSaudeDTO(UnidadeSaude unidadeSaude) {
+        UnidadeSaudeDTO unidadeSaudeDTO = new UnidadeSaudeDTO(unidadeSaude.getCnes(), unidadeSaude.getName(), unidadeSaude.getBairro());
         return unidadeSaudeDTO;
     }
 
@@ -40,6 +50,7 @@ public class UnidadeSaudeDTO {
         return "UnidadeSaudeDTO{" +
                 "nces='" + nces + '\'' +
                 ", nome='" + nome + '\'' +
+                ", bairro='" + bairro + '\'' +
                 '}';
     }
 }

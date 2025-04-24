@@ -1,5 +1,6 @@
 package tela;
 
+
 import rmi.cidade.Cidade;
 import rmi.cidade.ICidadeService;
 import rmi.ubs.IUnidadeSaudeService;
@@ -29,7 +30,7 @@ public class ClienteRMI {
         String hostCBOService = "10.100.32.7";
         int portaCBOService = 2000;
 
-        String hostUBSService = "10.100.32.55";
+        String hostUBSService = "10.100.32.40";
         int portaUBSService = 2000;
 
         try {
@@ -40,12 +41,12 @@ public class ClienteRMI {
 
 
             ICidadeService cidadeManager = (ICidadeService) registryCidadeService.lookup("rmi://" + hostCidadeService + ":" + portaCidadeService + "/cidade");
-//            ICboManager cboManager = (ICboManager) registryCBOService.lookup("rmi://" + hostCBOService + ":" + portaCBOService + "/cbo");
+////            ICboManager cboManager = (ICboManager) registryCBOService.lookup("rmi://" + hostCBOService + ":" + portaCBOService + "/cbo");
             IUnidadeSaudeService unidadeSaudeManager = (IUnidadeSaudeService) registryUBSService.lookup("rmi://" + hostUBSService + ":" + portaUBSService + "/unidadesSaude");
 
 
 
-//            Menu menu = new Menu(cidadeManager.getCidades(), (List<Cbo>) cboManager.getListCbo(), unidadeSaudeManager.getAll());
+////            Menu menu = new Menu(cidadeManager.getCidades(), (List<Cbo>) cboManager.getListCbo(), unidadeSaudeManager.getAll());
             Menu menu = new Menu(cidadeManager.getCidades(), new ArrayList<>(), unidadeSaudeManager.getAll());
 
             menu.iniciar();

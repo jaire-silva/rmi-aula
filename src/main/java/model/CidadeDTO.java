@@ -8,13 +8,15 @@ public class CidadeDTO implements Serializable {
 
     private String ibge;
     private String nome;
+    private int populacao;
 
     public CidadeDTO() {
     }
 
-    public CidadeDTO(String ibge, String nome) {
+    public CidadeDTO(String ibge, String nome, int populacao) {
         this.ibge = ibge;
         this.nome = nome;
+        this.populacao = populacao;
     }
 
     public String getIbge() {
@@ -33,16 +35,25 @@ public class CidadeDTO implements Serializable {
         this.nome = nome;
     }
 
+    public int getPopulacao() {
+        return populacao;
+    }
+
+    public void setPopulacao(int populacao) {
+        this.populacao = populacao;
+    }
+
     public static CidadeDTO parseCidadeToCidadeDTO(Cidade cidade) {
-        CidadeDTO cidadeDTO = new CidadeDTO(cidade.getIbge(), cidade.getNome());
+        CidadeDTO cidadeDTO = new CidadeDTO(cidade.getIbge(), cidade.getNome(), cidade.getPopulacao());
         return cidadeDTO;
     }
 
     @Override
     public String toString() {
-        return "Cidade{" +
+        return "CidadeDTO{" +
                 "ibge='" + ibge + '\'' +
                 ", nome='" + nome + '\'' +
+                ", populacao=" + populacao +
                 '}';
     }
 }
