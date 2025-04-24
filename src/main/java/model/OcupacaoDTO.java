@@ -1,7 +1,7 @@
 package model;
 
 import rmi.cidade.Cidade;
-import rmiCbo.Cbo;
+import rmiCBO.Cbo;
 
 public class OcupacaoDTO {
     private String cbo;

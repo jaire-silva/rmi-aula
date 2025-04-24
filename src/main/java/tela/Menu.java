@@ -6,7 +6,7 @@ import model.Pessoa;
 import model.UnidadeSaudeDTO;
 import rmi.cidade.Cidade;
 import rmi.ubs.UnidadeSaude;
-import rmiCbo.Cbo;
+import rmiCBO.Cbo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +16,48 @@ public class Menu {
     private List<CidadeDTO> cidades = new ArrayList<>();
     private List<OcupacaoDTO> ocupacoes = new ArrayList<>();
     private List<UnidadeSaudeDTO> unidadesSaude = new ArrayList<>();
-    private Pessoa pessoa = new Pessoa();
+    private Pessoa pessoa =null;
+    private List<Pessoa> pessoas = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     public Menu(List<Cidade> cidades, List<Cbo> ocupacoes, List<UnidadeSaude> unidadesSaude) {
         setCidades(cidades);
         setOcupacoes(ocupacoes);
         setUnidadesSaude(unidadesSaude);
+    }
+
+    public void iniciar() {
+        int opcao = -1;
+
+        while (opcao != 0) {
+            System.out.println("0 - SAIR \n1 - ADICIONAR NOVA PESSOA \n2 - LISTAR");
+            if (scanner.hasNextInt()) {
+                opcao = scanner.nextInt();
+
+                if (opcao == 0){
+                    return;
+                }
+                else if (opcao == 1){
+                    pessoa = new Pessoa();
+                    setNomePessoa();
+                    setCPFPessoa();
+                    setCidadePessoa();
+//                    setOcupacaoPessoa();
+                    setUnidadesSaude();
+                    pessoas.add(pessoa);
+                }
+                else if(opcao == 2){
+                    System.out.println("aqui");
+                    System.out.println(pessoas);
+                }
+            }
+            else {
+                return;
+            }
+        }
+
+
+
     }
 
     public void setNomePessoa() {
@@ -89,6 +124,23 @@ public class Menu {
         }
     }
 
+    public void setUnidadesSaude() {
+        listaUbs();
+        System.out.print("Entre com o número de uma das unidades de saude acima para cadastrar: ");
+        int ubsIndex;
+
+        while (true) {
+            if (scanner.hasNextInt()) {
+                ubsIndex = scanner.nextInt();
+                pessoa.setUniSaude(unidadesSaude.get(ubsIndex));
+                break;
+            } else {
+                System.out.print("Entre com o número de uma das unidades de saude acima para cadastrar: ");
+                scanner.next();
+            }
+        }
+    }
+
     private void listaCidades() {
         for (CidadeDTO cidade : cidades) {
             StringBuffer stringBuffer = new StringBuffer();
@@ -108,6 +160,18 @@ public class Menu {
             stringBuffer.append(ocupacoes.indexOf(ocupacao));
             stringBuffer.append(" - ");
             stringBuffer.append(ocupacao.getNome());
+
+            System.out.println(stringBuffer.toString());
+        }
+    }
+
+    private void listaUbs() {
+        for (UnidadeSaudeDTO ubs : unidadesSaude) {
+            StringBuffer stringBuffer = new StringBuffer();
+
+            stringBuffer.append(unidadesSaude.indexOf(ubs));
+            stringBuffer.append(" - ");
+            stringBuffer.append(ubs.getNome());
 
             System.out.println(stringBuffer.toString());
         }
